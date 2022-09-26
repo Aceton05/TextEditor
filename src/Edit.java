@@ -294,87 +294,23 @@ public class Edit extends javax.swing.JFrame {
     }//GEN-LAST:event_miOeffnenActionPerformed
 
     private void tfZeileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfZeileActionPerformed
-        cursorZuZeile();
-        try{
-        int lineNumber =Integer.parseInt( tfZeile.getText());
-        taText.setCaretPosition(lineNumber);
-        int cPos = taText.getCaretPosition();
-       int startOffset = taText.getLineStartOffset(lineNumber);
-       String str = taText.getText(startOffset, (cPos - startOffset));
-       int len = str.length();                
-       tfSpalte.setText(String.valueOf(len));
-       tfZeichen.setText(String.valueOf(cPos));         
-         } catch (BadLocationException e) {
-             taMeldungen.setText(e.getMessage());
-        } 
+        cursorZuZeile();       
     }//GEN-LAST:event_tfZeileActionPerformed
 
     private void tfSpalteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfSpalteActionPerformed
-        cursorZuSpalte();
-        try{
-            int len =Integer.parseInt( tfSpalte.getText());
-        int cPos = taText.getCaretPosition();
-       int lineNumber = taText.getLineOfOffset(cPos); // beginnt bei 0
-       int startOffset = taText.getLineStartOffset(lineNumber);
-       String str = taText.getText(startOffset, (cPos - startOffset));            
-       tfZeile.setText(String.valueOf(lineNumber+1));
-       tfSpalte.setText(String.valueOf(len));
-       tfZeichen.setText(String.valueOf(cPos)); 
-       } catch (BadLocationException e) {
-             taMeldungen.setText(e.getMessage());
-        } 
+        cursorZuSpalte();       
     }//GEN-LAST:event_tfSpalteActionPerformed
 
     private void taTextCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_taTextCaretUpdate
-        try{
-        int cPos = taText.getCaretPosition();
-        tfZeichen.setText(String.valueOf(cPos)); 
-       int lineNumber = taText.getLineOfOffset(cPos);
-       int startOffset = taText.getLineStartOffset(lineNumber);
-       String str = taText.getText(startOffset, (cPos - startOffset));
-       int len = str.length();         
-       tfZeile.setText(String.valueOf(lineNumber+1));
-       tfSpalte.setText(String.valueOf(len));       
-       } catch (BadLocationException e) {
-             taMeldungen.setText(e.getMessage());
-        } 
+        zeigeCursorPosition();        
     }//GEN-LAST:event_taTextCaretUpdate
 
     private void meDarkmodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meDarkmodeActionPerformed
-       darkmode();
-        Color background;
-       Color forground;
-        if(meDarkmode.isSelected()){
-           background=(Color.DARK_GRAY);
-           forground=(Color.white);      
-       }else{
-           background=(Color.white);
-           forground=(Color.black);            
-       }
-       fContent.setBackground(background);
-       fContent.setForeground(forground);         
-       Component[] children = fContent.getComponents();
-       setColorOfComponents(children,background,forground); 
+       darkmode();       
     }//GEN-LAST:event_meDarkmodeActionPerformed
 
     private void tfZeichenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfZeichenActionPerformed
-        cursorZuZeichen();
-        try{
-        int cPos = Integer.parseInt(tfZeichen.getText());
-        
-        tfZeichen.setText(String.valueOf(cPos)); 
-       int lineNumber = taText.getLineOfOffset(cPos); // beginnt bei 0
-       int startOffset = taText.getLineStartOffset(lineNumber);
-       String str = taText.getText(startOffset, (cPos - startOffset));
-       int len = str.length();         
-       tfZeile.setText(String.valueOf(lineNumber+1));
-       tfSpalte.setText(String.valueOf(len));
-       taText.requestFocusInWindow();
-       taText.setCaretPosition(cPos);          
-       } catch (BadLocationException e) {
-             taMeldungen.setText(e.getMessage());
-        } 
-        
+        cursorZuZeichen(); 
     }//GEN-LAST:event_tfZeichenActionPerformed
 
     private void btErsetzenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btErsetzenActionPerformed
@@ -475,19 +411,78 @@ public class Edit extends javax.swing.JFrame {
         } 
     }
     private void cursorZuZeile() {
-        
+         try{
+        int lineNumber =Integer.parseInt( tfZeile.getText());
+        taText.setCaretPosition(lineNumber);
+        int cPos = taText.getCaretPosition();
+       int startOffset = taText.getLineStartOffset(lineNumber);
+       String str = taText.getText(startOffset, (cPos - startOffset));
+       int len = str.length();                
+       tfSpalte.setText(String.valueOf(len));
+       tfZeichen.setText(String.valueOf(cPos));         
+         } catch (BadLocationException e) {
+             taMeldungen.setText(e.getMessage());
+        } 
     }
     private void cursorZuSpalte() {
-        
+         try{
+            int len =Integer.parseInt( tfSpalte.getText());
+        int cPos = taText.getCaretPosition();
+       int lineNumber = taText.getLineOfOffset(cPos); // beginnt bei 0
+       int startOffset = taText.getLineStartOffset(lineNumber);
+       String str = taText.getText(startOffset, (cPos - startOffset));            
+       tfZeile.setText(String.valueOf(lineNumber+1));
+       tfSpalte.setText(String.valueOf(len));
+       tfZeichen.setText(String.valueOf(cPos)); 
+       } catch (BadLocationException e) {
+             taMeldungen.setText(e.getMessage());
+        } 
     }
     private void cursorZuZeichen() {
+        try{
+        int cPos = Integer.parseInt(tfZeichen.getText());
         
+        tfZeichen.setText(String.valueOf(cPos)); 
+       int lineNumber = taText.getLineOfOffset(cPos); // beginnt bei 0
+       int startOffset = taText.getLineStartOffset(lineNumber);
+       String str = taText.getText(startOffset, (cPos - startOffset));
+       int len = str.length();         
+       tfZeile.setText(String.valueOf(lineNumber+1));
+       tfSpalte.setText(String.valueOf(len));
+       taText.requestFocusInWindow();
+       taText.setCaretPosition(cPos);          
+       } catch (BadLocationException e) {
+             taMeldungen.setText(e.getMessage());
+        } 
     }
     private void zeigeCursorPosition() {
-        
+        try{
+        int cPos = taText.getCaretPosition();
+        tfZeichen.setText(String.valueOf(cPos)); 
+       int lineNumber = taText.getLineOfOffset(cPos);
+       int startOffset = taText.getLineStartOffset(lineNumber);
+       String str = taText.getText(startOffset, (cPos - startOffset));
+       int len = str.length();         
+       tfZeile.setText(String.valueOf(lineNumber+1));
+       tfSpalte.setText(String.valueOf(len));       
+       } catch (BadLocationException e) {
+             taMeldungen.setText(e.getMessage());
+        } 
     }
     private void darkmode() {
-        
+         Color background;
+       Color forground;
+        if(meDarkmode.isSelected()){
+           background=(Color.DARK_GRAY);
+           forground=(Color.white);      
+       }else{
+           background=(Color.white);
+           forground=(Color.black);            
+       }
+       fContent.setBackground(background);
+       fContent.setForeground(forground);         
+       Component[] children = fContent.getComponents();
+       setColorOfComponents(children,background,forground); 
     }
     private void suchen() {
         taText.requestFocusInWindow();
