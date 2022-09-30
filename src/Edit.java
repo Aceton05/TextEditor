@@ -61,6 +61,7 @@ public class Edit extends javax.swing.JFrame {
         tfErsetzen = new javax.swing.JTextField();
         btErsetzen = new javax.swing.JButton();
         btSonderzeichen = new javax.swing.JButton();
+        cbGroßschreibung = new javax.swing.JCheckBox();
         meBar = new javax.swing.JMenuBar();
         meDatei = new javax.swing.JMenu();
         miOeffnen = new javax.swing.JMenuItem();
@@ -187,6 +188,9 @@ public class Edit extends javax.swing.JFrame {
             }
         });
 
+        cbGroßschreibung.setSelected(true);
+        cbGroßschreibung.setText("Großschreibung ignorieren");
+
         javax.swing.GroupLayout fContentLayout = new javax.swing.GroupLayout(fContent);
         fContent.setLayout(fContentLayout);
         fContentLayout.setHorizontalGroup(
@@ -200,35 +204,39 @@ public class Edit extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(fContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(fContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfSuchen)
-                                .addComponent(btSuchen, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                                .addComponent(tfErsetzen))
-                            .addComponent(btErsetzen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btSonderzeichen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(fContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(fContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfSuchen)
+                                    .addComponent(btSuchen, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                                    .addComponent(tfErsetzen))
+                                .addComponent(btErsetzen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btSonderzeichen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(fContentLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(cbGroßschreibung)))
                         .addGap(39, 39, 39)))
                 .addContainerGap())
         );
         fContentLayout.setVerticalGroup(
             fContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fContentLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(fContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fContentLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
                         .addComponent(tfSuchen, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbGroßschreibung)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btSuchen, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(tfErsetzen, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btErsetzen, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btSonderzeichen, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE))
-                    .addGroup(fContentLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)
-                        .addGap(18, 18, 18)))
+                        .addGap(0, 47, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,6 +268,11 @@ public class Edit extends javax.swing.JFrame {
 
         miSpeichernUnter.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         miSpeichernUnter.setText("Speichern unter");
+        miSpeichernUnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSpeichernUnterActionPerformed(evt);
+            }
+        });
         meDatei.add(miSpeichernUnter);
         meDatei.add(jSeparator2);
 
@@ -384,6 +397,10 @@ public class Edit extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,textArea,"Program Info",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_miInfoActionPerformed
 
+    private void miSpeichernUnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSpeichernUnterActionPerformed
+        speichernUnter();
+    }//GEN-LAST:event_miSpeichernUnterActionPerformed
+
     
     
     
@@ -427,6 +444,7 @@ public class Edit extends javax.swing.JFrame {
     private javax.swing.JButton btErsetzen;
     private javax.swing.JButton btSonderzeichen;
     private javax.swing.JButton btSuchen;
+    private javax.swing.JCheckBox cbGroßschreibung;
     private javax.swing.JPanel fContent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -455,28 +473,40 @@ public class Edit extends javax.swing.JFrame {
     private javax.swing.JTextField tfZeile;
     // End of variables declaration//GEN-END:variables
     private SonderzeichenDialog sonderzeichenDialog;
+    private Path currentFilePath;
     private void laden() {
        JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Dateien", "txt");
         chooser.setFileFilter(filter);
+        FileNameExtensionFilter jsonFilter = new FileNameExtensionFilter("Java Dateien", "java");
+        chooser.addChoosableFileFilter(jsonFilter);
         int returnVal = chooser.showOpenDialog(this);
         try{
         if(returnVal == JFileChooser.APPROVE_OPTION){
-           File selected = chooser.getSelectedFile();
-           taText.setText(Files.readString(selected.toPath()));
-           setTitle("TextEditor - "+selected.getName());
+           currentFilePath = chooser.getSelectedFile().toPath();
+           taText.setText(Files.readString(currentFilePath));
+           setTitle("TextEditor - "+currentFilePath.getFileName());
         }
         } catch (IOException e){
           taMeldungen.setText(e.getMessage());
         } 
         zeigeCursorPosition();
     }
-    private void speichern() {
+    private void speichern() {       
+        try{               
+           Files.writeString(currentFilePath, taText.getText());        
+        } catch (IOException e){
+          taMeldungen.setText(e.getMessage());
+        }   
+    }
+    private void speichernUnter() {
         //TODO
        JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Dateien", "txt");
         chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(this);
+        FileNameExtensionFilter jsonFilter = new FileNameExtensionFilter("Java Dateien", "java");
+        chooser.addChoosableFileFilter(jsonFilter);
+        int returnVal = chooser.showSaveDialog(this);
         try{
         if(returnVal == JFileChooser.APPROVE_OPTION){
            File selected = chooser.getSelectedFile();           
@@ -498,27 +528,21 @@ public class Edit extends javax.swing.JFrame {
     }
     private void cursorZuZeile() {
          try{
-        int lineNumber =Integer.parseInt( tfZeile.getText());
-        int columnNumber = Integer.parseInt(tfSpalte.getText()); 
-        int ofset =taText.getLineStartOffset(lineNumber)-1;
-        int cPos = ofset+columnNumber;
-        tfZeichen.setText(String.valueOf(cPos)); 
+        int lineNumber =Integer.parseInt( tfZeile.getText()); 
+        int ofset =taText.getLineStartOffset(lineNumber);              
         taText.requestFocusInWindow();
-        taText.setCaretPosition(cPos);  
+        taText.setCaretPosition(ofset);  
          } catch (BadLocationException e) {
              taMeldungen.setText(e.getMessage());
         } 
     }
     private void cursorZuSpalte() {
         try{
-        int lineNumber =Integer.parseInt( tfZeile.getText());
-        System.out.println(lineNumber);
+            int cPos = taText.getCaretPosition();
+       int lineNumber = taText.getLineOfOffset(cPos);
         int columnNumber = Integer.parseInt(tfSpalte.getText()); 
-        System.out.println(columnNumber);
-        int ofset =taText.getLineStartOffset(lineNumber)-1;
-        System.out.println(ofset);
-        int cPos = ofset+columnNumber;
-        tfZeichen.setText(String.valueOf(cPos)); 
+        int ofset =taText.getLineStartOffset(lineNumber);
+        cPos=ofset+columnNumber; 
         taText.requestFocusInWindow();
         taText.setCaretPosition(cPos);  
          } catch (BadLocationException e) {
@@ -575,8 +599,12 @@ public class Edit extends javax.swing.JFrame {
     }
     private void suchen() {
         taText.requestFocusInWindow();
-        String suche = tfSuchen.getText().toLowerCase();
-        String text = taText.getText().toLowerCase();
+        String suche = tfSuchen.getText();
+        String text = taText.getText();
+        if(cbGroßschreibung.isSelected()){
+            suche=suche.toLowerCase();
+            text=text.toLowerCase();            
+        }
         int caretPos = taText.getCaretPosition();
         if(caretPos==text.length())
             caretPos=0;
@@ -590,9 +618,13 @@ public class Edit extends javax.swing.JFrame {
     }
     private void ersetzen() {
         taText.requestFocusInWindow();
-        String suche = tfSuchen.getText().toLowerCase();
-        String ersetzte = tfErsetzen.getText().toLowerCase();
-        String text = taText.getText().toLowerCase();
+        String suche = tfSuchen.getText();
+        String ersetzte = tfErsetzen.getText();
+        String text = taText.getText();
+        if(cbGroßschreibung.isSelected()){
+            suche=suche.toLowerCase();
+            text=text.toLowerCase();            
+        }
         int caretPos = taText.getCaretPosition();
         if(caretPos==text.length())
             caretPos=0;
