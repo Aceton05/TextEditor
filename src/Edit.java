@@ -393,7 +393,7 @@ public class Edit extends javax.swing.JFrame {
     private void miInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miInfoActionPerformed
         JEditorPane textArea = new JEditorPane("text/html",lizens);        
         textArea.setEditable(false);
-        textArea.setPreferredSize(new Dimension( 510, 400 ));        
+        textArea.setPreferredSize(new Dimension( 510,300 ));        
         JOptionPane.showMessageDialog(this,textArea,"Program Info",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_miInfoActionPerformed
 
@@ -706,8 +706,7 @@ public class Edit extends javax.swing.JFrame {
             str.getChars(position, len, updatedArr, position + 1);
             return new String(updatedArr);
         }
-        private String lizens="<center><p>Simple text editor with search and replace funktion. Only support for German language but has DarkMode"
-                + "as an extra Feature.<br> " +
+        private String lizens="<center><p>Simple text editor with search and replace funktion. <b>DarkMode as an extra Feature.</b> (Only support for German language)<br> " +
 "    <b>Copyright <sup>\u00A9</sup> 2022</b>  <a href=\"mailto:Michael.Köhler@udo.edu\">Aceton05, Michael.Köhler@udo.edu</a></p>" +
 "\n" +
 "    <p>This program is free software: you can redistribute it and/or modify\n" +
